@@ -56,11 +56,11 @@ export default function Header({ user }: HeaderProps) {
                             <DropdownMenuContent className="sm:hidden flex flex-col justify-center items-center" align="end">
                                 <DropdownMenuItem >
                                     <Link href="/my-codes">
-                                        <Button variant="success">My Codes</Button>
+                                        <Button className="text-white" variant="success">My Codes</Button>
                                     </Link>
                                 </DropdownMenuItem>
                                 <DropdownMenuItem >
-                                    <Button disabled={isLoading} onClick={handleCreateNewCode} variant="secondary">{isLoading ? "Creating New...." : "New Compiler"}</Button>
+                                    <Button disabled={isLoading} onClick={handleCreateNewCode} className="" variant="secondary">{isLoading ? "Creating New...." : "New Compiler"}</Button>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
@@ -92,17 +92,17 @@ export default function Header({ user }: HeaderProps) {
                             <DropdownMenuContent className="sm:hidden flex flex-col justify-center items-center" align="end">
                                 <DropdownMenuItem >
                                     <Link href="/compiler">
-                                        <Button className="text-white" variant="link">Try Compiler</Button>
+                                        <Button  variant="link">Try Compiler</Button>
                                     </Link>
                                 </DropdownMenuItem>
                                 <DropdownMenuItem >
                                     <Link href="/sign-in">
-                                        <Button variant="success">Login</Button>
+                                        <Button className="text-white" variant="success">Login</Button>
                                     </Link>
                                 </DropdownMenuItem>
                                 <DropdownMenuItem >
                                     <Link href="/sign-up">
-                                        <Button variant="success">Signup</Button>
+                                        <Button className="text-white" variant="success">Signup</Button>
                                     </Link>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
