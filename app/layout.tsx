@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Head from 'next/head'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
@@ -27,6 +28,9 @@ export default function RootLayout({
 
       }}>
       <html lang="en">
+      <Head>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      </Head>
         <body className={inter.className}>
          
             <ThemeProvider

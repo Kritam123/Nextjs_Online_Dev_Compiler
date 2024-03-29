@@ -36,7 +36,7 @@ const AllCodes = ({getMyCodes}:any) => {
         {getMyCodes?.length !== 0 ? (
         <div className="p-3 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3">
           {getMyCodes?.map((item:any) => {
-            return <CodeItem deleteBtn={true} key={item._id} data={item} />;
+            return <CodeItem deleteBtn={true} key={item.id} data={item} />;
           })}
         </div>
       ) : (
