@@ -5,7 +5,6 @@ import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import { dark } from '@clerk/themes';
 import { ThemeProvider } from "@/components/theme-provider";
-import Header from "@/components/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -26,7 +25,13 @@ export default function RootLayout({
       <html lang="en">
         <body className={inter.className}>
          
-            <ThemeProvider>
+            <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            storageKey="theme-nextjs"
+            disableTransitionOnChange
+            enableSystem
+            >
               <Toaster />
               {children}
             </ThemeProvider>

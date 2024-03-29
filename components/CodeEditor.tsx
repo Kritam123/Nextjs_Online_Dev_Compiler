@@ -8,8 +8,10 @@ import {
 import { loadLanguage } from "@uiw/codemirror-extensions-langs";
 import CodeMirror from "@uiw/react-codemirror";
 import useCompilerStore from "@/hooks/use-code";
+import { useTheme } from "next-themes";
 
 const CodeEditor = ({ codeData }: any) => {
+    const { theme } = useTheme()
     const { fullCode: code, updateFullCode,updateCodeTitle, updateIsOwner,currentLanguage, updateCode } = useCompilerStore();
     const fullCode = codeData?.findCode.fullCode;
     const title = codeData?.findCode?.title
@@ -19,7 +21,7 @@ const CodeEditor = ({ codeData }: any) => {
         updateCodeTitle(title);
         updateIsOwner(isOwner);
     }, [fullCode,title,isOwner,updateFullCode,updateCodeTitle, updateIsOwner]);
-    const theme = "dark";
+    
     const onChange = useCallback(
         (val: string) => {
             updateCode(val);
