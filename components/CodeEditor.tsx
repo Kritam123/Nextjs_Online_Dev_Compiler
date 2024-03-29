@@ -19,13 +19,13 @@ const CodeEditor = ({ codeData }: any) => {
         updateFullCode(fullCode);
         updateCodeTitle(title);
         updateIsOwner(isOwner);
-    }, [fullCode,title,isOwner]);
+    }, [fullCode,title,isOwner,updateFullCode,updateCodeTitle, updateIsOwner]);
     const theme = "dark";
     const onChange = useCallback(
         (val: string) => {
             updateCode(val);
         },
-        [currentLanguage]
+        [updateCode]
     );
     return (
         <CodeMirror

@@ -42,7 +42,7 @@ const AllCodes = ({getMyCodes}:any) => {
       ) : (
         <div className="flex justify-center items-center min-h-[calc(100vh-60px)]">
           <p className="text-center font-mono text-black  p-3">
-            You don't have any saved codes.{" "}
+            You don&apos;t have any saved codes.{" "}
             <Button
               disabled={isLoading}
               onClick={handleCreateNewCode}
