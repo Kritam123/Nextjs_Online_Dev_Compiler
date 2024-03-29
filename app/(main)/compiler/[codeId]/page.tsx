@@ -9,9 +9,16 @@ import {
 } from "@/components/ui/resizable";
 import { getCode } from '@/lib/code';
 import { getCurrentUser } from '@/lib/getCurrentUser';
+import { redirect } from 'next/navigation';
 const page = async({params}:{params:{codeId:string}}) => {
+  if(params.codeId.length < 24 ){
+   return redirect("/404");
+  }
   const code =  await getCode(params.codeId);
   const user = await getCurrentUser();
+  if(!code) {
+  return  redirect("/");
+  } 
   return (
     <ResizablePanelGroup direction="horizontal">
     <ResizablePanel defaultSize={50} className="h-[calc(100vh-60px)] min-w-[350px]">
