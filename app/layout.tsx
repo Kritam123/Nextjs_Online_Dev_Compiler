@@ -3,7 +3,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
-import { dark } from '@clerk/themes';
+import { dark,neobrutalism } from '@clerk/themes';
 import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +20,11 @@ export default function RootLayout({
   return (
     <ClerkProvider
       appearance={{
-        baseTheme: dark
+        baseTheme: neobrutalism,
+        userButton:{
+          baseTheme:neobrutalism
+        },
+
       }}>
       <html lang="en">
         <body className={inter.className}>
@@ -31,6 +35,7 @@ export default function RootLayout({
             storageKey="theme-nextjs"
             disableTransitionOnChange
             enableSystem
+          
             >
               <Toaster />
               {children}

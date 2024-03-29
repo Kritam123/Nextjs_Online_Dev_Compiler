@@ -54,7 +54,7 @@ export default function Header({ user }: HeaderProps) {
                         </li>
                         
                         <li className="w-full h-full">
-                        <UserButton afterSignOutUrl="/signin" />
+                        <UserButton afterSignOutUrl="/" />
                         </li>
                         
                     </div>
@@ -66,12 +66,12 @@ export default function Header({ user }: HeaderProps) {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/signin">
+                            <Link href="/sign-in">
                                 <Button variant="success">Login</Button>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/signup">
+                            <Link href="/sign-up">
                                 <Button variant="success">Signup</Button>
                             </Link>
                         </li>
