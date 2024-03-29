@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  username       String   @unique
+  email          String
+  externalUserId String   @unique
+  picture        String   @default("https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  fullCodes      Code[]
+}
+
+model Code {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  fullCode   FullCode @relation(fields: [fullCodeId], references: [id])
+  fullCodeId String   @db.ObjectId
+  user       User     @relation(fields: [ownerInfo], references: [id])
+  ownerInfo  String   @db.ObjectId
+  ownerName  String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([fullCodeId])
+}
+
+model FullCode {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  html       String?
+  css        String?
+  javascript String?
+  Code       Code[]
+}
