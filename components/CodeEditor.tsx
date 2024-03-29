@@ -7,7 +7,6 @@ import {
 } from "@uiw/codemirror-theme-solarized";
 import { loadLanguage } from "@uiw/codemirror-extensions-langs";
 import CodeMirror from "@uiw/react-codemirror";
-import { } from "@/components/theme-provider";
 import useCompilerStore from "@/hooks/use-code";
 
 const CodeEditor = ({ codeData }: any) => {

@@ -7,20 +7,20 @@ import {
 } from "@uiw/codemirror-theme-solarized";
 import { loadLanguage } from "@uiw/codemirror-extensions-langs";
 import CodeMirror from "@uiw/react-codemirror";
-import { useDispatch, useSelector } from "react-redux";
+import useCompilerStore from "@/hooks/use-code";
 
 const TryCodeEditor = () => {
-   
+    const { fullCode: code,currentLanguage, updateCode } = useCompilerStore();
     const theme = "dark";
     const onChange = useCallback(
         (val: string) => {
-          
+            updateCode(val);
         },
-        []
+        [updateCode]
     );
     return (
         <CodeMirror
-            value={""}
+            value={code[currentLanguage]}
             theme={
                 theme === "dark"
                     ? solarizedDarkInit({
@@ -39,7 +39,7 @@ const TryCodeEditor = () => {
                     })
             }
             height="calc(100vh - 60px - 50px)"
-            extensions={[loadLanguage("javascript")!]}
+            extensions={[loadLanguage(currentLanguage)!]}
             onChange={onChange}
         />
     );
