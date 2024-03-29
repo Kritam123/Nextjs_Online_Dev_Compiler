@@ -167,7 +167,7 @@ const HelperHeader = ({ user }: any) => {
 
 
       </div>
-      <div className="__tab_switcher flex gap-1 items-center">
+      <div className="__tab_switcher dark:text-white text-black flex gap-1 items-center">
         Language:
         <Select defaultValue={currentLanguage} onValueChange={(value) => handleChange(value as "html" | "css" | "javascript")} >
           <SelectTrigger className="w-[120px] bg-gray-800 focus:ring-0">
