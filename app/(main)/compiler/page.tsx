@@ -14,7 +14,7 @@ export default function TryCompiler() {
                 <TryCodeEditor />
             </ResizablePanel>
             <ResizableHandle withHandle />
-            <ResizablePanel className="h-[calc(100vh-60px)] min-w-[350px]" defaultSize={50}><RenderCode /></ResizablePanel>
+            <ResizablePanel className="h-[calc(100vh-60px)] sm:block max-[640px]:hidden min-w-[350px]" defaultSize={50}><RenderCode /></ResizablePanel>
         </ResizablePanelGroup>
     );
 }
