@@ -147,6 +147,9 @@ export const deleteCodeApi = async (codeId: string) => {
       where: {
         id: codeId,
       },
+      include: {
+        fullCode: true,
+      },
     });
     if (!existingCode) {
       return new Error("Code not found");
@@ -154,12 +157,18 @@ export const deleteCodeApi = async (codeId: string) => {
     if (existingCode.ownerInfo.toString() !== user.id.toString()) {
       return new Error("You don't have permission to delete this code!");
     }
+    
     const deleteCode = await db.code.delete({
       where: {
         id: codeId,
       },
+      
     });
-
+    await db.fullCode.delete({
+      where: {
+        id: deleteCode.fullCodeId
+      },
+    });
     return deleteCode;
   } catch (error) {
     console.log(error);

@@ -11,14 +11,17 @@ import { useRouter } from "next/navigation";
 import useCompilerStore from "@/hooks/use-code";
 import { Code, Menu } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "./ui/dropdown-menu";
+import { useState } from "react";
 
 interface HeaderProps {
     user: User | null
 }
 export default function Header({ user }: HeaderProps) {
     const { updateCodeTitle, updateFullCode } = useCompilerStore();
+    const [isLoading, setIsLoading] = useState(false)
     const router = useRouter();
     const handleCreateNewCode = async () => {
+        setIsLoading(true);
         try {
             const result = await createCode();
             // @ts-ignore
@@ -26,11 +29,13 @@ export default function Header({ user }: HeaderProps) {
             // @ts-ignore
             updateFullCode(result?.fullCode);
             // @ts-ignore
-            updateCodeTitle(result?.title)
+            updateCodeTitle(result?.title);
             toast.success("create new code!");
         } catch (error) {
             handleError(error);
             console.log(error);
+        } finally {
+            setIsLoading(false)
         }
     }
     return (
@@ -55,7 +60,7 @@ export default function Header({ user }: HeaderProps) {
                                     </Link>
                                 </DropdownMenuItem>
                                 <DropdownMenuItem >
-                                    <Button onClick={handleCreateNewCode} variant="secondary">New Compiler</Button>
+                                    <Button disabled={isLoading} onClick={handleCreateNewCode} variant="secondary">{isLoading ? "Creating New...." : "New Compiler"}</Button>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
